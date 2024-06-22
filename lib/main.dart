@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:holbegram/screens/login_screen.dart';
 import 'firebase_options.dart';
+import './widgets/text_field.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Test Home Page'),
+      home: LoginScreen(emailController: TextEditingController(), passwordController: TextEditingController(), passwordVisible: true),
     );
   }
 }
@@ -109,6 +111,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(
+              width: 250,
+              child: TextFieldInput(
+                controller: TextEditingController(),
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),

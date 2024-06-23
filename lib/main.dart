@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:holbegram/screens/login_screen.dart';
+import 'package:holbegram/screens/signup_screen.dart';
 import 'firebase_options.dart';
 import './widgets/text_field.dart';
 
@@ -37,7 +37,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(emailController: TextEditingController(), passwordController: TextEditingController(), passwordVisible: true),
+      home: SignupScreen(
+        emailController: TextEditingController(),
+        usernameController: TextEditingController(),
+        passwordController: TextEditingController(),
+        passwordConfirmController: TextEditingController(),
+      ),
+      // home: LoginScreen(emailController: TextEditingController(), passwordController: TextEditingController())
     );
   }
 }

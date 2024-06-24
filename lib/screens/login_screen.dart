@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:holbegram/widgets/text_field.dart';
 import 'package:holbegram/screens/signup_screen.dart';
+import 'package:holbegram/methods/auth_methods.dart';
 
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final AuthMethods authMethods;
   final bool _passwordVisible;
 
   const LoginScreen({
     super.key,
     required this.emailController,
     required this.passwordController,
+    required this.authMethods,
     bool passwordVisible = true,
   }) : _passwordVisible = passwordVisible;
 
@@ -103,7 +106,20 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () async {
+                            String succeeded = await widget.authMethods.login(
+                              email: widget.emailController.text,
+                              password: widget.passwordController.text,
+                            );
+
+                            if (succeeded == 'Success') {
+                              print('Login successful');
+                              // TODO: Add home screen navigation
+                              // Navigator.of(context).pushReplacement(
+                              //     MaterialPageRoute(
+                              //         builder: (context) => const SignupScreen()));
+                            }
+                          },
                           child: const Text(
                             'Login',
                             style: TextStyle(color: Colors.white),

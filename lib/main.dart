@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  final db = FirebaseFirestore.instance;
   runApp(const MyApp());
 }
 

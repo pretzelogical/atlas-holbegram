@@ -3,10 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:holbegram/screens/signup_screen.dart';
 import 'firebase_options.dart';
 import './widgets/text_field.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final db = FirebaseFirestore.instance;
   runApp(const MyApp());
 }
 

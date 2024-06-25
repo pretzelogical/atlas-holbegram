@@ -178,7 +178,6 @@ class _SignupScreenState extends State<SignupScreen> {
                               builder: (context) => LoginScreen(
                                   emailController: TextEditingController(),
                                   passwordController: TextEditingController(),
-                                  authMethods: AuthMethods()
                               ),
                             ));
                           },

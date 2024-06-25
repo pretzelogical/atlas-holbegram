@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holbegram/screens/login_screen.dart';
 import 'package:holbegram/screens/signup_screen.dart';
-import 'package:holbegram/methods/auth_methods.dart';
 
 class PlaceholderHomePage extends StatelessWidget {
   const PlaceholderHomePage({super.key});
@@ -39,7 +38,6 @@ class PlaceholderHomePage extends StatelessWidget {
                           builder: (context) => LoginScreen(
                                 emailController: TextEditingController(),
                                 passwordController: TextEditingController(),
-                                authMethods: AuthMethods(),
                               )));
                 },
                 child: const Text('Signup screen'))

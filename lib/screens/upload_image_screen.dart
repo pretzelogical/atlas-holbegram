@@ -74,30 +74,30 @@ class _AddPictureState extends State<AddPicture> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Column(children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child: HolbegramHeader(),
                     ),
                     Text("Hello, ${widget.username} Welcome to Holbegram.",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             height: 1.2)),
-                    Text("Choose an image from your gallery or take a new one.",
+                    const Text("Choose an image from your gallery or take a new one.",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 25),
                   child: ClipOval(
                       clipBehavior: Clip.antiAlias,
                       child: image != null
@@ -107,32 +107,31 @@ class _AddPictureState extends State<AddPicture> {
                               width: 200,
                               fit: BoxFit.scaleDown,
                             )
-                          : Text('Loading image...'))),
+                          : const Text('Loading image...'))),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   textBaseline: TextBaseline.alphabetic,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.image_outlined,
+                      icon: const Icon(Icons.image_outlined,
                           size: 50, color: Color.fromARGB(218, 226, 37, 24)),
                       onPressed: selectImageFromGallery,
                     ),
                     IconButton(
-                      icon: Icon(Icons.camera_alt_outlined,
+                      icon: const Icon(Icons.camera_alt_outlined,
                           size: 50, color: Color.fromARGB(218, 226, 37, 24)),
                       onPressed: selectImageFromCamera,
                     )
                   ]),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: FilledButton(
                     onPressed: () {},
-                    child: const Text('Next', style: TextStyle(fontSize: 28)),
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color>(
-                          Color.fromARGB(255, 226, 37, 24)),
+                          const Color.fromARGB(255, 226, 37, 24)),
                       padding: WidgetStateProperty.all<EdgeInsets>(
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
                       ),
                       shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
@@ -140,6 +139,7 @@ class _AddPictureState extends State<AddPicture> {
                         ),
                       ),
                     ),
+                    child: const Text('Next', style: TextStyle(fontSize: 28)),
                   ))
             ])));
   }

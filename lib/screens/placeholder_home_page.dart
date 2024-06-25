@@ -26,12 +26,9 @@ class PlaceholderHomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SignupScreen(
+                          builder: (context) => LoginScreen(
                                 emailController: TextEditingController(),
-                                usernameController: TextEditingController(),
                                 passwordController: TextEditingController(),
-                                passwordConfirmController:
-                                    TextEditingController(),
                               )));
                 },
                 child: const Text('Login screen')),
@@ -40,9 +37,12 @@ class PlaceholderHomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LoginScreen(
+                          builder: (context) => SignupScreen(
                                 emailController: TextEditingController(),
+                                usernameController: TextEditingController(),
                                 passwordController: TextEditingController(),
+                                passwordConfirmController:
+                                    TextEditingController(),
                               )));
                 },
                 child: const Text('Signup screen')),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:holbegram/screens/placeholder_home_page.dart';
 import 'package:holbegram/widgets/holbegram_header.dart';
+import 'package:holbegram/methods/auth_methods.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddPicture extends StatefulWidget {
@@ -90,7 +92,8 @@ class _AddPictureState extends State<AddPicture> {
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                             height: 1.2)),
-                    const Text("Choose an image from your gallery or take a new one.",
+                    const Text(
+                        "Choose an image from your gallery or take a new one.",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold)),
                   ],
@@ -126,7 +129,27 @@ class _AddPictureState extends State<AddPicture> {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: FilledButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                        final result = await AuthMethods().signUpUser(
+                          email: widget.email,
+                          password: widget.password,
+                          username: widget.username,
+                          file: image,
+                        );
+                        if (result == 'Success' && mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Account created successfully'),
+                            ),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PlaceholderHomePage(),
+                            ),
+                          );
+                        }
+                    },
                     style: ButtonStyle(
                       backgroundColor: WidgetStateProperty.all<Color>(
                           const Color.fromARGB(255, 226, 37, 24)),

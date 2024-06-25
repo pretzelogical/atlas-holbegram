@@ -49,4 +49,11 @@ class AuthMethods {
 
     return 'Success';
   }
+
+  Future<UserModel> getUserDetails() async {
+    User currentUser = _auth.currentUser!;
+    DocumentSnapshot documentSnapshot =
+        await _firestore.collection('users').doc(currentUser.uid).get();
+    return UserModel.fromSnapshot(documentSnapshot);
+  }
 }

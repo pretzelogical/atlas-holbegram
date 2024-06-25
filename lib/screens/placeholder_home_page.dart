@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:holbegram/screens/login_screen.dart';
 import 'package:holbegram/screens/signup_screen.dart';
+import 'package:holbegram/screens/upload_image_screen.dart';
 import 'package:holbegram/widgets/holbegram_header.dart';
 
 class PlaceholderHomePage extends StatelessWidget {
@@ -44,7 +45,19 @@ class PlaceholderHomePage extends StatelessWidget {
                                 passwordController: TextEditingController(),
                               )));
                 },
-                child: const Text('Signup screen'))
+                child: const Text('Signup screen')),
+            FilledButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddPicture(
+                              email: 'none@nomail.com',
+                              password: '123',
+                              username: 'John Doe',
+                              image: null)));
+                },
+                child: const Text('Upload image screen'))
           ]),
         )
       ],

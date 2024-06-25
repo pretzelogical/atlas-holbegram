@@ -74,44 +74,73 @@ class _AddPictureState extends State<AddPicture> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: 20),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 220,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HolbegramHeader(),
-                Text("Hello ${widget.username}",
-                    style: const TextStyle(fontSize: 20)),
-                Text("Choose an image from your gallery or take a new one",
-                    style: const TextStyle(fontSize: 12)),
-              ],
-            )),
-            image != null
-                    ? Image.memory(
-                        image!,
-                        height: 200,
-                        width: 200,
-                        fit: BoxFit.contain,
-                      )
-                    : Text('Loading image...'),
-            // Row(
-            //   children: [
-            //     IconButton(
-            //       icon: Icon(Icon.),
-            //       onPressed: selectImageFromGallery,
-            //     ),
-            //     IconButton(
-            //       Icon(Icon.camera),
-            //       onPressed: selectImageFromCamera,
-            //     ),
-            //   ],
-            // )
-        ]
-      )
-      
-    ));
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            child: Column(children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: HolbegramHeader(),
+                    ),
+                    Text("Hello, ${widget.username} Welcome to Holbegram.",
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2)),
+                    Text("Choose an image from your gallery or take a new one.",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  child: ClipOval(
+                      clipBehavior: Clip.antiAlias,
+                      child: image != null
+                          ? Image.memory(
+                              image!,
+                              height: 200,
+                              width: 200,
+                              fit: BoxFit.scaleDown,
+                            )
+                          : Text('Loading image...'))),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.image_outlined,
+                          size: 50, color: Color.fromARGB(218, 226, 37, 24)),
+                      onPressed: selectImageFromGallery,
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.camera_alt_outlined,
+                          size: 50, color: Color.fromARGB(218, 226, 37, 24)),
+                      onPressed: selectImageFromCamera,
+                    )
+                  ]),
+              Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: FilledButton(
+                    onPressed: () {},
+                    child: const Text('Next', style: TextStyle(fontSize: 28)),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                          Color.fromARGB(255, 226, 37, 24)),
+                      padding: WidgetStateProperty.all<EdgeInsets>(
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                      ),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ))
+            ])));
   }
 }

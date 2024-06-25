@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:holbegram/screens/login_screen.dart';
 import 'package:holbegram/screens/signup_screen.dart';
+import 'package:holbegram/widgets/holbegram_header.dart';
 
 class PlaceholderHomePage extends StatelessWidget {
   const PlaceholderHomePage({super.key});
@@ -11,9 +12,12 @@ class PlaceholderHomePage extends StatelessWidget {
         body: ListView(
       padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
       children: [
-        const Center(
-            child: Text('Holbegram placeholder home',
-                style: TextStyle(fontSize: 20))),
+        const Column(
+          children: [
+            HolbegramHeader(),
+            Text('Holbegram placeholder home', style: TextStyle(fontSize: 20))
+          ],
+        ),
         Center(
           child: Column(children: [
             FilledButton(

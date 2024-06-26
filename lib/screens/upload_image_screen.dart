@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:holbegram/screens/placeholder_home_page.dart';
+import 'package:holbegram/screens/home.dart';
 import 'package:holbegram/widgets/holbegram_header.dart';
 import 'package:holbegram/methods/auth_methods.dart';
 import 'package:image_picker/image_picker.dart';
@@ -145,7 +145,7 @@ class _AddPictureState extends State<AddPicture> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const PlaceholderHomePage(),
+                              builder: (context) => Home(),
                             ),
                           );
                         }

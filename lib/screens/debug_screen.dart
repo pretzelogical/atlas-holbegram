@@ -5,8 +5,8 @@ import 'package:holbegram/screens/signup_screen.dart';
 import 'package:holbegram/screens/upload_image_screen.dart';
 import 'package:holbegram/widgets/holbegram_header.dart';
 
-class PlaceholderHomePage extends StatelessWidget {
-  const PlaceholderHomePage({super.key});
+class DebugScreen extends StatelessWidget {
+  const DebugScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PlaceholderHomePage extends StatelessWidget {
         const Column(
           children: [
             HolbegramHeader(),
-            Text('Holbegram placeholder home', style: TextStyle(fontSize: 20))
+            Text('Holbegram debug navigation', style: TextStyle(fontSize: 20))
           ],
         ),
         Center(

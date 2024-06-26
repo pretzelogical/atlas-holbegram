@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:holbegram/pages/feed.dart';
-import 'package:holbegram/screens/placeholder_home_page.dart';
+import 'package:holbegram/screens/debug_screen.dart';
 
 class BottomNav extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _BottomNavState extends State<BottomNav> {
         controller: _pageController,
         children: [
           Feed(),
-          const PlaceholderHomePage()
+          const DebugScreen()
         ],
       ),
     );

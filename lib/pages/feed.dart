@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:holbegram/utils/posts.dart';
 
 class Feed extends StatelessWidget {
 
@@ -30,7 +30,7 @@ class Feed extends StatelessWidget {
         ],
       ),
       // TODO: Add feed widget
-      body: const Center(child: Text('Feed')),
+      body: const Posts(),
     );
   }
 }

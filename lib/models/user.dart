@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// TODO: Finalize the user model
+
 class UserModel {
   final String? uid;
   final String? username;

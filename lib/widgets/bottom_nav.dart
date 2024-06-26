@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:holbegram/pages/feed.dart';
 import 'package:holbegram/screens/debug_screen.dart';
 import 'package:holbegram/pages/add_image.dart';
+import 'package:holbegram/pages/favorite.dart';
 
 class BottomNav extends StatefulWidget {
   @override
@@ -29,15 +30,19 @@ class _BottomNavState extends State<BottomNav> {
           },
           destinations: const [
             NavigationDestination(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
               label: 'Home',
             ),
             NavigationDestination(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.add_outlined),
               label: 'Add',
             ),
             NavigationDestination(
-              icon: Icon(Icons.star),
+              icon: Icon(Icons.favorite_border),
+              label: 'Favorites'
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.star_outline),
               label: 'Debug',
             ),
           ]),
@@ -54,6 +59,7 @@ class _BottomNavState extends State<BottomNav> {
           AddImage(
             captionController: TextEditingController(),
           ),
+          const Favorites(),
           const DebugScreen()
         ],
       ),

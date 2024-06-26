@@ -6,6 +6,8 @@ import 'package:holbegram/models/user.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:typed_data';
 
+// TODO: Batch some of the firestore operations here
+
 class PostStorage {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final StorageMethods _storageMethods = StorageMethods();

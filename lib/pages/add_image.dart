@@ -115,7 +115,6 @@ class _AddImageState extends State<AddImage> {
                                       const SnackBar(
                                           content: Text('Post Uploaded')),
                                     );
-                                    Navigator.pop(context);
                                     return;
                                   }
 

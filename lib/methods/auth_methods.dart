@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:holbegram/methods/user_storage.dart';
 import 'dart:typed_data';
 import 'package:holbegram/models/user.dart';
 import 'package:uuid/uuid.dart';
@@ -7,6 +8,7 @@ import 'package:uuid/uuid.dart';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final StorageMethods _storageMethods = StorageMethods();
 
 
   Future<String> login({
@@ -37,10 +39,12 @@ class AuthMethods {
 
     try {
       final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      final photoUrl = await _storageMethods.uploadImageToStorage(false, 'profile', file!);
       final UserModel user = UserModel(
         uid: userCredential.user?.uid,
         username: username,
         email: email,
+        photoUrl: photoUrl,
       );
       await _firestore.collection('users').doc(user.uid).set(user.toFirestore());
     } catch (e) {

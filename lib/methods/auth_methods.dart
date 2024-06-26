@@ -38,7 +38,7 @@ class AuthMethods {
     try {
       _auth.createUserWithEmailAndPassword(email: email, password: password);
       final UserModel user = UserModel(
-        uid: const Uuid().v4(),
+        uid: const Uuid().v1(),
         username: username,
         email: email,
       );

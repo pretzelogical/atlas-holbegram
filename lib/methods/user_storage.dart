@@ -24,4 +24,9 @@ class StorageMethods {
     String downloadUrl = await snapshot.ref.getDownloadURL();
     return downloadUrl;
   }
+
+  Future<void> deleteImageFromStorage(String url) async {
+    Reference ref = _storage.refFromURL(url);
+    await ref.delete();
+  }
 }

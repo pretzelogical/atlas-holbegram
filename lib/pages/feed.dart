@@ -29,7 +29,6 @@ class Feed extends StatelessWidget {
           )
         ],
       ),
-      // TODO: Add feed widget
       body: const Posts(),
     );
   }

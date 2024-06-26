@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:holbegram/models/posts.dart';
 
 class Posts extends StatefulWidget {
   const Posts({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class _PostsState extends State<Posts> {
           }
 
           var data = snapshot.data!.docs;
+          final posts = data.map((e) => PostModel.fromSnapshot(e)).toList();
 
           return SingleChildScrollView(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -34,7 +36,8 @@ class _PostsState extends State<Posts> {
                           "https://placehold.co/400x400/black/white.png",
                       username: "Username",
                       caption: "Caption",
-                      likes: 5)
+                      likes: 5),
+                  for (var post in posts) Post.fromModel(post),
                 ],
               ));
         });
@@ -55,6 +58,16 @@ class Post extends StatelessWidget {
       required this.username,
       required this.caption,
       required this.likes});
+
+  factory Post.fromModel(PostModel post) {
+    return Post(
+        profilePictureUrl: post.profImage,
+        pictureUrl: post.postUrl,
+        username: post.username,
+        caption: post.caption,
+        likes: post.likes.length
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -36,9 +36,9 @@ class AuthMethods {
     }
 
     try {
-      _auth.createUserWithEmailAndPassword(email: email, password: password);
+      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       final UserModel user = UserModel(
-        uid: const Uuid().v1(),
+        uid: userCredential.user?.uid,
         username: username,
         email: email,
       );
@@ -52,6 +52,7 @@ class AuthMethods {
 
   Future<UserModel> getUserDetails() async {
     User currentUser = _auth.currentUser!;
+    print(currentUser.uid);
     DocumentSnapshot documentSnapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
     return UserModel.fromSnapshot(documentSnapshot);

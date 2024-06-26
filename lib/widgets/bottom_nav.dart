@@ -16,6 +16,8 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+          indicatorColor: const Color.fromARGB(255, 255, 190, 185),
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           selectedIndex: _currentIndex,
           onDestinationSelected: (int index) {
             setState(() {
@@ -41,6 +43,12 @@ class _BottomNavState extends State<BottomNav> {
           ]),
       body: PageView(
         controller: _pageController,
+        onPageChanged: (value) {
+          if (_currentIndex == value) return;
+          setState(() {
+            _currentIndex = value;
+          });
+        },
         children: [
           Feed(),
           AddImage(

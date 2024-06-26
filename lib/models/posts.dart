@@ -30,6 +30,7 @@ class PostModel {
       postUrl: snapshotData['postUrl'],
       profImage: snapshotData['profImage'],
       likes: snapshotData['likes'],
+      // TODO: Normalize timestamp
       datePublished: snapshotData['datePublished'],
       username: snapshotData['username'],
       caption: snapshotData['caption']

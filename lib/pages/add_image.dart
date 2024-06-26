@@ -1,7 +1,9 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:holbegram/models/user.dart';
 import 'package:holbegram/widgets/text_field.dart';
+import 'package:holbegram/methods/post_storage.dart';
+import 'package:holbegram/methods/auth_methods.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddImage extends StatefulWidget {
@@ -97,7 +99,31 @@ class _AddImageState extends State<AddImage> {
                               icon: const Icon(Icons.close),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                final UserModel userDetails =
+                                    await AuthMethods().getUserDetails();
+                                final res = await PostStorage().uploadPost(
+                                  widget.captionController.text,
+                                  userDetails.uid ?? '',
+                                  userDetails.username ?? '',
+                                  userDetails.photoUrl ?? '',
+                                  image ?? Uint8List(0),
+                                );
+                                if (mounted) {
+                                  if (res == 'Success') {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('Post Uploaded')),
+                                    );
+                                    Navigator.pop(context);
+                                    return;
+                                  }
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(res)),
+                                  );
+                                }
+                              },
                               icon: const Icon(Icons.send),
                             )
                           ],

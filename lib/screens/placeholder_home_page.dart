@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holbegram/screens/home.dart';
 import 'package:holbegram/screens/login_screen.dart';
 import 'package:holbegram/screens/signup_screen.dart';
 import 'package:holbegram/screens/upload_image_screen.dart';
@@ -57,7 +58,15 @@ class PlaceholderHomePage extends StatelessWidget {
                               username: 'John Doe',
                               image: null)));
                 },
-                child: const Text('Upload image screen'))
+                child: const Text('Upload image screen')),
+            FilledButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Home()));
+                },
+                child: const Text('Home screen'))
           ]),
         )
       ],

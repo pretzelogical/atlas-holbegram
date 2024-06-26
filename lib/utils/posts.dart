@@ -4,13 +4,15 @@ import 'package:holbegram/models/posts.dart';
 import 'package:holbegram/methods/post_storage.dart';
 
 class Posts extends StatefulWidget {
-  const Posts({Key? key}) : super(key: key);
+  const Posts({super.key});
 
   @override
   State<Posts> createState() => _PostsState();
 }
 
 class _PostsState extends State<Posts> {
+  final PostStorage _postStorage = PostStorage();
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -30,8 +32,8 @@ class _PostsState extends State<Posts> {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: Column(
                 children: [
-                  for (var post in posts) Post.fromModel(post),
-                  const Post(
+                  for (var post in posts) Post.fromModel(post, _postStorage),
+                  Post(
                       profilePictureUrl:
                           "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
                       pictureUrl:
@@ -39,7 +41,8 @@ class _PostsState extends State<Posts> {
                       username: "Username",
                       caption: "Caption",
                       likes: 5,
-                      postId: "test"),
+                      postId: "test",
+                      postStorage: _postStorage,),
                 ],
               ));
         });
@@ -53,6 +56,7 @@ class Post extends StatelessWidget {
   final String caption;
   final int likes;
   final String postId;
+  final PostStorage postStorage;
 
   const Post(
       {super.key,
@@ -61,16 +65,18 @@ class Post extends StatelessWidget {
       required this.username,
       required this.caption,
       required this.likes,
-      required this.postId});
+      required this.postId,
+      required this.postStorage});
 
-  factory Post.fromModel(PostModel post) {
+  factory Post.fromModel(PostModel post, PostStorage postStorage) {
     return Post(
         profilePictureUrl: post.profImage,
         pictureUrl: post.postUrl,
         username: post.username,
         caption: post.caption,
         likes: post.likes.length,
-        postId: post.postId);
+        postId: post.postId,
+        postStorage: postStorage);
   }
 
   @override
@@ -99,7 +105,7 @@ class Post extends StatelessWidget {
               if (postId == 'test') {
                 return;
               }
-              final String result = await PostStorage().deletePost(postId);
+              final String result = await postStorage.deletePost(postId);
               if (result == 'Success') {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Post Deleted')),
@@ -133,7 +139,25 @@ class Post extends StatelessWidget {
           children: [
             IconButton(
               icon: const Icon(Icons.favorite_border),
-              onPressed: () {},
+              onPressed: () async {
+                final res = await postStorage.likePost(postId);
+                if (res == 'Added') {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Post Liked')),
+                  );
+                  return;
+                }
+                if (res == 'Removed') {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Post Unliked')),
+                  );
+                  return;
+                }
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(res)),
+                );
+              },
             ),
             IconButton(
               icon: const Icon(Icons.mode_comment_outlined),

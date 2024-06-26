@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:holbegram/methods/user_storage.dart';
 import 'dart:typed_data';
 import 'package:holbegram/models/user.dart';
-import 'package:uuid/uuid.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -56,7 +55,6 @@ class AuthMethods {
 
   Future<UserModel> getUserDetails() async {
     User currentUser = _auth.currentUser!;
-    print(currentUser.uid);
     DocumentSnapshot documentSnapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
     return UserModel.fromSnapshot(documentSnapshot);

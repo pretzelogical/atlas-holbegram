@@ -31,7 +31,7 @@ class _PostsState extends State<Posts> {
               child: Column(
                 children: [
                   for (var post in posts) Post.fromModel(post),
-                  Post(
+                  const Post(
                       profilePictureUrl:
                           "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
                       pictureUrl:
@@ -132,21 +132,21 @@ class Post extends StatelessWidget {
         Row(
           children: [
             IconButton(
-              icon: const Icon(Icons.favorite),
+              icon: const Icon(Icons.favorite_border),
               onPressed: () {},
             ),
             IconButton(
-              icon: const Icon(Icons.comment),
+              icon: const Icon(Icons.mode_comment_outlined),
               onPressed: () {},
             ),
             IconButton(
-              icon: const Icon(Icons.share),
+              icon: const Icon(Icons.share_outlined),
               onPressed: () {},
             ),
           ],
         ),
         IconButton(
-          icon: const Icon(Icons.bookmark),
+          icon: const Icon(Icons.bookmark_outline),
           onPressed: () {},
         )
       ]),

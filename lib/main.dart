@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:holbegram/screens/debug_screen.dart';
 import 'package:holbegram/screens/home.dart';
 import 'firebase_options.dart';
 

@@ -4,6 +4,7 @@ import 'package:holbegram/screens/login_screen.dart';
 import 'package:holbegram/screens/signup_screen.dart';
 import 'package:holbegram/screens/upload_image_screen.dart';
 import 'package:holbegram/widgets/holbegram_header.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DebugScreen extends StatelessWidget {
   const DebugScreen({super.key});
@@ -14,10 +15,12 @@ class DebugScreen extends StatelessWidget {
         body: ListView(
       padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
       children: [
-        const Column(
+        Column(
           children: [
-            HolbegramHeader(),
-            Text('Holbegram debug navigation', style: TextStyle(fontSize: 20))
+            const HolbegramHeader(),
+            const Text('Holbegram debug screen', style: TextStyle(fontSize: 20)),
+            Text('Username: ${FirebaseAuth.instance.currentUser?.email}'),
+            Text('Auth uid: ${FirebaseAuth.instance.currentUser?.uid}'),
           ],
         ),
         Center(

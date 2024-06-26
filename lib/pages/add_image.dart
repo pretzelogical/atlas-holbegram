@@ -70,13 +70,13 @@ class _AddImageState extends State<AddImage> {
                             onPressed: () {
                               selectImage(ImageSource.gallery);
                             },
-                            icon: const Icon(Icons.image),
+                            icon: const Icon(Icons.image_outlined, size: 40),
                           ),
                           IconButton(
                             onPressed: () {
                               selectImage(ImageSource.camera);
                             },
-                            icon: const Icon(Icons.camera),
+                            icon: const Icon(Icons.camera_outlined, size: 40),
                           ),
                         ],
                       )

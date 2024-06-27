@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:holbegram/screens/home.dart';
+import 'package:holbegram/screens/login_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -36,7 +38,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: FirebaseAuth.instance.currentUser == null
+          ? LoginScreen(
+            emailController: TextEditingController(),
+            passwordController: TextEditingController(),
+          )
+          : Home(),
     );
   }
 }

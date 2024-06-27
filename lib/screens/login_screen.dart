@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:holbegram/widgets/text_field.dart';
 import 'package:holbegram/screens/signup_screen.dart';
 import 'package:holbegram/methods/auth_methods.dart';
-import 'package:holbegram/screens/debug_screen.dart';
+import 'package:holbegram/screens/home.dart';
 
 class LoginScreen extends StatefulWidget {
   final TextEditingController emailController;
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               // TODO: Add home screen navigation
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => const DebugScreen()));
+                                      builder: (context) => Home()));
                             }
                           },
                           child: const Text(

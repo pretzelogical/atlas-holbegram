@@ -110,7 +110,7 @@ class _AddPictureState extends State<AddPicture> {
                               width: 200,
                               fit: BoxFit.scaleDown,
                             )
-                          : const Text('Loading image...'))),
+                          : const CircularProgressIndicator())),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   textBaseline: TextBaseline.alphabetic,

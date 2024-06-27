@@ -23,9 +23,7 @@ class _BottomNavState extends State<BottomNav> {
           onDestinationSelected: (int index) {
             setState(() {
               _currentIndex = index;
-              _pageController.animateToPage(index,
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.easeIn);
+              _pageController.jumpToPage(index);
             });
           },
           destinations: const [

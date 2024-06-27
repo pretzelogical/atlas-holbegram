@@ -18,7 +18,8 @@ class DebugScreen extends StatelessWidget {
         Column(
           children: [
             const HolbegramHeader(),
-            const Text('Holbegram debug screen', style: TextStyle(fontSize: 20)),
+            const Text('Holbegram debug screen',
+                style: TextStyle(fontSize: 20)),
             Text('Username: ${FirebaseAuth.instance.currentUser?.email}'),
             Text('Auth uid: ${FirebaseAuth.instance.currentUser?.uid}'),
           ],
@@ -65,11 +66,21 @@ class DebugScreen extends StatelessWidget {
             FilledButton(
                 onPressed: () {
                   Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
+                },
+                child: const Text('Home screen')),
+            FilledButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Home()));
+                          builder: (context) => LoginScreen(
+                                emailController: TextEditingController(),
+                                passwordController: TextEditingController(),
+                              )));
                 },
-                child: const Text('Home screen'))
+                child: const Text('Log out'))
           ]),
         )
       ],

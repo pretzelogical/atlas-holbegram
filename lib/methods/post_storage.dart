@@ -109,4 +109,17 @@ class PostStorage {
       return e.toString();
     }
   }
+
+  Future<List<PostModel>> getLiked() async {
+    final uid = _auth.currentUser!.uid;
+
+    return await _firestore
+        .collection('posts')
+        .where('likes', arrayContains: uid)
+        .orderBy('datePublished', descending: true)
+        .get()
+        .then((value) => value.docs
+            .map((doc) => PostModel.fromSnapshot(doc))
+            .toList());
+  }
 }

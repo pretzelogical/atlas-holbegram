@@ -112,7 +112,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
 
                             if (succeeded == 'Success') {
-                              // TODO: Add home screen navigation
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) => Home()));

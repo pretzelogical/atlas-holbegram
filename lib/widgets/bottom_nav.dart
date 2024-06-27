@@ -3,6 +3,7 @@ import 'package:holbegram/pages/feed.dart';
 import 'package:holbegram/screens/debug_screen.dart';
 import 'package:holbegram/pages/add_image.dart';
 import 'package:holbegram/pages/favorite.dart';
+import 'package:holbegram/methods/post_storage.dart';
 
 class BottomNav extends StatefulWidget {
   @override
@@ -57,7 +58,9 @@ class _BottomNavState extends State<BottomNav> {
           AddImage(
             captionController: TextEditingController(),
           ),
-          const Favorites(),
+          Favorites(
+            postStorage: PostStorage(),
+          ),
           const DebugScreen()
         ],
       ),
